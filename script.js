@@ -134,4 +134,46 @@ document.getElementById('alertModal').addEventListener('click', function(e) {
     if (e.target === this) {
         closeAlert();
     }
+});
+
+function showPrivacyInfo() {
+    const modal = document.getElementById('privacyModal');
+    const content = document.getElementById('privacyContent');
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    
+    // Animasi masuk
+    setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+    }, 10);
+}
+
+function closePrivacyInfo() {
+    const modal = document.getElementById('privacyModal');
+    const content = document.getElementById('privacyContent');
+    
+    // Animasi keluar
+    content.classList.remove('scale-100', 'opacity-100');
+    content.classList.add('scale-95', 'opacity-0');
+    
+    setTimeout(() => {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    }, 150);
+}
+
+// Tambahkan event listener untuk menutup modal privasi dengan tombol Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePrivacyInfo();
+    }
+});
+
+// Tambahkan event listener untuk menutup modal privasi ketika mengklik di luar modal
+document.getElementById('privacyModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closePrivacyInfo();
+    }
 }); 
